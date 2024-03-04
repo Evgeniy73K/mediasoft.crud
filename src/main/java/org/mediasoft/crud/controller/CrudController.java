@@ -1,11 +1,9 @@
 package org.mediasoft.crud.controller;
 
-import jakarta.validation.Valid;
 import org.mediasoft.crud.db.entity.ProductEntity;
 import org.mediasoft.crud.db.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,14 +20,13 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1")
 @EnableJpaRepositories
-@Validated
 public class CrudController {
     @Autowired
     ProductService productService;
 
     @PostMapping("/create")
-    public ProductEntity createProduct(@Valid @RequestBody ProductEntity product) {
-        return productService.createOrUpdateProduct(product);
+    public ProductEntity createProduct(@RequestBody ProductEntity product) {
+        return validateProduct(product) ? productService.createOrUpdateProduct(product) : null;
     }
 
     @GetMapping("/products")
@@ -48,7 +45,8 @@ public class CrudController {
     }
 
     @PutMapping("/products/{id}")
-    public ProductEntity replaceProduct(@Valid @RequestBody ProductEntity newProduct, @PathVariable UUID id) {
+    public ProductEntity updateProduct(@RequestBody ProductEntity newProduct, @PathVariable UUID id) {
+        if (!validateProduct(newProduct)) return null;
         var currentProduct = productService.getProductById(id);
 
         currentProduct.setName(newProduct.getName());
@@ -61,4 +59,12 @@ public class CrudController {
         return productService.createOrUpdateProduct(currentProduct);
     }
 
+    private boolean validateProduct(ProductEntity product) {
+        return product.getName() != null && !product.getName().isEmpty() &&
+                product.getArticle() != null && !product.getArticle().isEmpty() &&
+                product.getDictionary() != null && !product.getDictionary().isEmpty() &&
+                product.getCategoryId() != null &&
+                product.getPrice() != null &&
+                product.getQty() != null;
+    }
 }
