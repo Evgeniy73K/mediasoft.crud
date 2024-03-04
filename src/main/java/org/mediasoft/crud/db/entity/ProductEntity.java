@@ -1,7 +1,6 @@
 package org.mediasoft.crud.db.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -51,14 +50,5 @@ public class ProductEntity {
 
     @Column(name = "modified_at")
     private LocalDate modifiedAt;
-    @JsonIgnore
-    private UUID getId() {
-        return id;
-    }
-
-    private void setId(UUID id) {
-        this.id = id;
-    }
-
 }
 
