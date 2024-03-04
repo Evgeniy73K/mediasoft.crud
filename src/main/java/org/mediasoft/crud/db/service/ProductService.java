@@ -34,5 +34,4 @@ public class ProductService {
         log.info("Deleting product with id: {}", id);
         productEntityRepository.deleteById(id);
     }
-
 }
