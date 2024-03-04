@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  spring-boot-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydatabase
+      SPRING_DATASOURCE_USERNAME: user
+      SPRING_DATASOURCE_PASSWORD: 12345
+
+  postgres:
+    image: postgres:13
+    container_name: mypostgresdb
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+
+networks:
+  default:
+    driver: bridge
