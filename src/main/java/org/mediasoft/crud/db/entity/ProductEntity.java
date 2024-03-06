@@ -15,6 +15,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
+/**
+ *Таблица для хранения товаров
+ */
+
 @Entity
 @Builder(toBuilder = true)
 @AllArgsConstructor

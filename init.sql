@@ -1,5 +1,7 @@
+-- Installing the uuid-ossp extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+-- Creating tables category and products using UUID
 CREATE TABLE IF NOT EXISTS category
 (
     id          UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -22,8 +24,9 @@ CREATE TABLE IF NOT EXISTS products
     FOREIGN KEY (category_id) REFERENCES category (id) ON DELETE CASCADE
 );
 
-INSERT INTO category (id, category)
-VALUES ('63a66ab6-4b12-4950-9f82-9ab566dbcc75', 'Test category');
+-- Inserting data into category and products tables
+INSERT INTO category (category)
+VALUES ('Test category');
 
 INSERT INTO products (id, name, article, dictionary, category_id, price, qty, created_at, modified_at)
 VALUES (uuid_generate_v4(), 'Sample Product', 'ABC123', 'Sample Description',

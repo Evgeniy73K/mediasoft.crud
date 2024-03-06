@@ -1,7 +1,7 @@
-FROM openjdk:17-jdk-alpine
+FROM openjdk:17
 
 WORKDIR /app
 
-COPY app.jar app.jar
+COPY ./build/libs/crud-0.0.1-SNAPSHOT.jar /app/app.jar
 
 CMD ["java", "-jar", "app.jar"]

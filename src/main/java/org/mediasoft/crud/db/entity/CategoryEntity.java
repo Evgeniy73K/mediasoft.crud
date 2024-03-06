@@ -12,6 +12,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.UUID;
+/**
+ *Таблица для хранения категории
+ */
 
 @Getter
 @Setter

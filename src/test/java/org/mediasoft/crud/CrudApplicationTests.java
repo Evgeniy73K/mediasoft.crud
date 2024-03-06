@@ -4,7 +4,6 @@ import org.jeasy.random.EasyRandom;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mediasoft.crud.db.entity.CategoryEntity;
-import org.mediasoft.crud.db.service.CategoryService;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;

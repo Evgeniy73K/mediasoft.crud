@@ -1,6 +1,8 @@
 package org.mediasoft.crud.controller;
 
+import org.mediasoft.crud.db.entity.CategoryEntity;
 import org.mediasoft.crud.db.entity.ProductEntity;
+import org.mediasoft.crud.db.service.CategoryService;
 import org.mediasoft.crud.db.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -17,12 +19,18 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ *Рест контроллер приложения
+ */
+
 @RestController
 @RequestMapping("/api/v1")
 @EnableJpaRepositories
 public class CrudController {
     @Autowired
     ProductService productService;
+    @Autowired
+    CategoryService categoryService;
 
     @PostMapping("/create")
     public ProductEntity createProduct(@RequestBody ProductEntity product) {
@@ -30,8 +38,13 @@ public class CrudController {
     }
 
     @GetMapping("/products")
-    public List<ProductEntity> all() {
+    public List<ProductEntity> allProducts() {
         return productService.getAllProducts();
+    }
+
+    @GetMapping("/categories")
+    public List<CategoryEntity> allCategories() {
+        return categoryService.getAllCategories();
     }
 
     @GetMapping("/products/{id}")

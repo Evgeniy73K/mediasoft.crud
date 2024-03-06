@@ -2,7 +2,10 @@ package org.mediasoft.crud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.ComponentScan;
+
+/**
+ * Точка входа в приложение
+ */
 
 @SpringBootApplication
 
