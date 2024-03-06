@@ -1,0 +1,220 @@
+{
+	"info": {
+		"_postman_id": "04b564bf-a065-4760-a70a-3aaae988f3c0",
+		"name": "postman",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24524756"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/api/v1/create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"status code200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Проверка тела ответа\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData.name).to.equal(\"string\");",
+							"    pm.expect(responseData.article).to.equal(\"string\");",
+							"    pm.expect(responseData.dictionary).to.equal(\"string\");",
+							"    pm.expect(responseData.categoryId).to.equal(\"3fa85f64-5717-4562-b3fc-2c963f66afa6\");",
+							"    pm.expect(responseData.price).to.equal(0);",
+							"    pm.expect(responseData.qty).to.equal(0);",
+							"    pm.expect(responseData.createdAt).to.equal(\"2024-03-04\");",
+							"    pm.expect(responseData.modifiedAt).to.equal(\"2024-03-04\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"string\",\n  \"article\": \"string\",\n  \"dictionary\": \"string\",\n  \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"price\": 0,\n  \"qty\": 0,\n  \"createdAt\": \"2024-03-04\",\n  \"modifiedAt\": \"2024-03-04\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/products",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Проверка статус кода\", function () {",
+							"    pm.response.to.have.status(200);",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/products/2ab4abb2-f830-45be-a1dc-79297640cf53",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Проверка статус-кода - должен быть 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Проверка тела ответа\", function () {",
+							"    const responseData = pm.response.json();",
+							"    pm.expect(responseData.name).to.equal(\"test\");",
+							"    pm.expect(responseData.article).to.equal(\"string\");",
+							"    pm.expect(responseData.dictionary).to.equal(\"string\");",
+							"    pm.expect(responseData.categoryId).to.equal(\"3fa85f64-5717-4562-b3fc-2c963f66afa6\");",
+							"    pm.expect(responseData.price).to.equal(0);",
+							"    pm.expect(responseData.qty).to.equal(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"test\",\n  \"article\": \"string\",\n  \"dictionary\": \"string\",\n  \"categoryId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\n  \"price\": 0,\n  \"qty\": 0,\n  \"createdAt\": \"2024-03-04\",\n  \"modifiedAt\": \"2024-03-04\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products/c3fb4dc9-55c6-47d9-9d1c-f6d25f90c585",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"c3fb4dc9-55c6-47d9-9d1c-f6d25f90c585"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/products/f6ce51b0-a44d-406a-9709-2b1fa957f149",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products/840fbea9-7aca-4ad0-859e-bbfcd5a29b56",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"840fbea9-7aca-4ad0-859e-bbfcd5a29b56"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/api/v1/products/2ab4abb2-f830-45be-a1dc-79297640cf53",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/products/2ab4abb2-f830-45be-a1dc-79297640cf53",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"products",
+						"2ab4abb2-f830-45be-a1dc-79297640cf53"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
