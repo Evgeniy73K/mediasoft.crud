@@ -42,5 +42,11 @@ curl -X 'GET' \
 'http://localhost:8080/api/v1/products' \
 -H 'accept: */*'
 
+Доступы в БД:
+spring.datasource.url=jdbc:postgresql://localhost:5432/mydatabase
+spring.datasource.username=user
+spring.datasource.password=12345
+spring.datasource.driver-class-name=org.postgresql.Driver
+
 
    

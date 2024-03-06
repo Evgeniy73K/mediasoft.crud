@@ -32,6 +32,7 @@ public class DatabaseConfig {
     @Value("${spring.datasource.password}")
     private String password;
 
+
     @Bean
     public DataSource dataSource() {
         return DataSourceBuilder.create()
